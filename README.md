@@ -6,7 +6,14 @@ Implementations of classic design patterns in C and Java with comprehensive test
 
 - [Test Results](#test-results)
 - [Pattern Catalog](#pattern-catalog)
+- [OOP in C Techniques](docs/oop-in-c.md) - How to implement OOP in procedural C
 - [Usage](#usage)
+
+## About This Repository
+
+This repository demonstrates classic design patterns in both **Java** (object-oriented) and **C** (procedural). The C implementations use advanced techniques like function pointers, struct composition, and manual vtables to simulate OOP concepts.
+
+**Key insight**: C is not object-oriented, but design patterns can still be implemented using structs, function pointers, and disciplined organization. See [OOP in C Techniques](docs/oop-in-c.md) for detailed explanation.
 
 ## Test Results
 
