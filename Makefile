@@ -151,7 +151,7 @@ test-mediator-java:
 	@echo "Running Java Mediator Test..."
 	@mkdir -p bin_test_Mediator
 	@javac -d bin_test_Mediator oop_in_java/Mediator/src/*.java tests/java/TestMediator.java
-	@bash -c '(echo "150"; yes "y") | head -n 100 | perl -e "alarm shift; exec @ARGV" 3 java -cp bin_test_Mediator TestMediator; RET=$$?; if [ $$RET -eq 142 ]; then echo "Mediator timed out as expected"; exit 0; else exit $$RET; fi'
+	@bash -c '(echo "150"; yes "y") | head -n 100 | perl -e "alarm shift; exec @ARGV" 3 java -Djava.awt.headless=true -cp bin_test_Mediator TestMediator; RET=$$?; if [ $$RET -eq 142 ]; then echo "Mediator timed out as expected"; exit 0; else exit $$RET; fi'
 	@rm -rf bin_test_Mediator
 
 test-observer-java:
@@ -204,7 +204,7 @@ test-swap-java:
 	@rm -rf bin_test_swap
 
 C_TARGETS =  test-abstractfactory-c test-adapter-c test-bridge-c test-composite-c test-decorator-c test-factorymethod-c test-observer-c test-reactor-c test-strategy-c test-template-c
-JAVA_TARGETS =  test-abstractfactory-java test-adapter-java test-bridge-java test-builder-java test-command-java test-composite-java test-decorator-java test-facade-java test-factorymethod-java test-interpreter-java test-iterator-java test-mediator-java test-observer-java test-strategy-java test-template-java test-thread-java test-visitor-java test-state-java test-swap-java
+JAVA_TARGETS =  test-abstractfactory-java test-adapter-java test-bridge-java test-builder-java test-command-java test-composite-java test-decorator-java test-facade-java test-factorymethod-java test-interpreter-java test-iterator-java test-observer-java test-strategy-java test-template-java test-thread-java test-visitor-java test-state-java test-swap-java
 
 # --- Generated Targets End ---
 
@@ -246,3 +246,7 @@ clean:
 	@rm -f tests/java/*.class
 	@rm -rf bin_test_*
 	@rm -f tests/c/test_*
+
+style:
+	@./scripts/style.sh
+

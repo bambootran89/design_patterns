@@ -1,204 +1,234 @@
-#include<stdlib.h>
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #define MAX 100
 
-
-
-void* *AllocatedObject[MAX];
+void** AllocatedObject[MAX];
 int count = 0;
+/**
+ * @brief Product: Pizza.
+ *
+ * Pattern Role: Product.
+ * Common interface for all pizza types.
+ */
 typedef struct Pizza Pizza;
 
-struct Pizza{
-	char name[100];
-    char dough[100];
-	char sauce[100];
-    char toppings[MAX][100];
-    int num;	
+struct Pizza {
+  char name[100];
+  char dough[100];
+  char sauce[100];
+  char toppings[MAX][100];
+  int num;
 };
-void Pizza_ctor(Pizza * const me,const char * const name_, const char * const dough_, const char * const sauce_){
-	strcpy(me->name, name_);
-	strcpy(me->dough, dough_);
-    strcpy(me->sauce, sauce_);
-	me->num = 0;
+void Pizza_ctor(Pizza* const me, const char* const name_,
+                const char* const dough_, const char* const sauce_) {
+  strcpy(me->name, name_);
+  strcpy(me->dough, dough_);
+  strcpy(me->sauce, sauce_);
+  me->num = 0;
 }
 
-int  pizza_add(Pizza * const me, const char * const topping){
-     strcpy(me->toppings[me->num], topping);
-	 (me->num)++;
-
+int pizza_add(Pizza* const me, const char* const topping) {
+  strcpy(me->toppings[me->num], topping);
+  (me->num)++;
 }
-void pizza_prepare(Pizza * const me){
-	int i;
-	printf("Preparing ... %s\n", me->name);
-	printf("Tossing dough ...\n",me->dough);
-	printf("Adding sauce ...\n",me->sauce);
-	printf("Adding topping: ");
-    for(i =0; i<=me->num; i++)	
-       printf(" %s", me->toppings[i]);
+void pizza_prepare(Pizza* const me) {
+  int i;
+  printf("Preparing ... %s\n", me->name);
+  printf("Tossing dough ...\n", me->dough);
+  printf("Adding sauce ...\n", me->sauce);
+  printf("Adding topping: ");
+  for (i = 0; i <= me->num; i++) printf(" %s", me->toppings[i]);
 
-    printf("\n");
+  printf("\n");
 }
-void pizza_bake(Pizza * const me){
-	printf("Bake for 25 minutes at 350\n");
+void pizza_bake(Pizza* const me) { printf("Bake for 25 minutes at 350\n"); }
 
+void pizza_cut(Pizza* const me) {
+  printf("Cutting the pizza into diagonal slices\n");
 }
-
-void pizza_cut(Pizza * const me){
-	printf("Cutting the pizza into diagonal slices\n");
-
-}
-void pizza_box(Pizza * const me){
-	printf("Place pizza on official PizzaStore box\n");
-
+void pizza_box(Pizza* const me) {
+  printf("Place pizza on official PizzaStore box\n");
 }
 
-const char* const pizza_getName(Pizza * const me){
-	return me->name;
+const char* const pizza_getName(Pizza* const me) { return me->name; }
 
-}
-
+/**
+ * @brief Concrete Product: NY Style Cheese Pizza.
+ *
+ * Pattern Role: Concrete Product.
+ * NY-style pizza with specific ingredients.
+ */
 typedef struct NYSTyleCheesePizza {
-	Pizza super;
+  Pizza super;
 
-}NYSTyleCheesePizza; 
+} NYSTyleCheesePizza;
 
-void NYSTyleCheesePizza_ctor( NYSTyleCheesePizza * const me, const char * const name_, const char * const dough_, const char * const sauce_){
-	Pizza_ctor(&me->super,name_,dough_,sauce_);
+void NYSTyleCheesePizza_ctor(NYSTyleCheesePizza* const me,
+                             const char* const name_, const char* const dough_,
+                             const char* const sauce_) {
+  Pizza_ctor(&me->super, name_, dough_, sauce_);
 
-	pizza_add(&me->super,"Granted Reffiano cheese");
+  pizza_add(&me->super, "Granted Reffiano cheese");
 }
 
-typedef struct ChicagoStyleCheesePizza{
-	Pizza super;
+/**
+ * @brief Concrete Product: Chicago Style Cheese Pizza.
+ *
+ * Pattern Role: Concrete Product.
+ * Chicago-style pizza with specific ingredients.
+ */
+typedef struct ChicagoStyleCheesePizza {
+  Pizza super;
 
-}ChicagoStyleCheesePizza; 
+} ChicagoStyleCheesePizza;
 
-void ChicagoStyleCheesePizza_ctor( ChicagoStyleCheesePizza * const me, const char * const name_, const char * const dough_, const char * const sauce_){
-	Pizza_ctor(&me->super,name_,dough_,sauce_);
+void ChicagoStyleCheesePizza_ctor(ChicagoStyleCheesePizza* const me,
+                                  const char* const name_,
+                                  const char* const dough_,
+                                  const char* const sauce_) {
+  Pizza_ctor(&me->super, name_, dough_, sauce_);
 
-	pizza_add(&me->super,"Granted Reffiano cheese");
+  pizza_add(&me->super, "Granted Reffiano cheese");
 }
 
+/**
+ * @brief Creator: Pizza Store.
+ *
+ * Pattern Role: Creator (abstract).
+ * Defines factory method createPizza.
+ */
 typedef struct PizzaStore PizzaStore;
+/**
+ * @brief Virtual Table for PizzaStore.
+ *
+ * Pattern Role: Vtable for polymorphism.
+ * Contains factory method pointer.
+ */
 typedef struct PizTbl PizTbl;
 
 struct PizTbl {
-	Pizza * const  (*createPizza)(struct PizzaStore * const me, const char * const type);
+  Pizza* const (*createPizza)(struct PizzaStore* const me,
+                              const char* const type);
 };
-struct PizzaStore{
-    const PizTbl * vptr;
+struct PizzaStore {
+  const PizTbl* vptr;
 };
 
-Pizza * const pizzaStore_orderPizza(PizzaStore * const me,  const char * const type_){
-	 Pizza * const pizza = me->vptr->createPizza(me, type_);
-	 if(pizza !=NULL) {
-	 pizza_prepare(pizza);
-	 pizza_bake(pizza);
-	 pizza_cut(pizza);
-	 pizza_box(pizza);
-	 } else {
-
-		 printf(" pizza =  null\n");
-	 }
-	 return pizza;
+Pizza* const pizzaStore_orderPizza(PizzaStore* const me,
+                                   const char* const type_) {
+  Pizza* const pizza = me->vptr->createPizza(me, type_);
+  if (pizza != NULL) {
+    pizza_prepare(pizza);
+    pizza_bake(pizza);
+    pizza_cut(pizza);
+    pizza_box(pizza);
+  } else {
+    printf(" pizza =  null\n");
+  }
+  return pizza;
 }
 
-Pizza * const pizzaStore_createPizza(struct PizzaStore * const me,const char * const type){
-	  return NULL;
+Pizza* const pizzaStore_createPizza(struct PizzaStore* const me,
+                                    const char* const type) {
+  return NULL;
 }
 
-void PizzaStore_ctor(PizzaStore * const me){
-     static PizTbl const pizTbl = {
+void PizzaStore_ctor(PizzaStore* const me) {
+  static PizTbl const pizTbl = {
 
-		 .createPizza = pizzaStore_createPizza
-	 };
+      .createPizza = pizzaStore_createPizza};
 
-	 me->vptr = &pizTbl;
-
+  me->vptr = &pizTbl;
 }
 
-typedef struct ChicagoPizzaStore
-{
+/**
+ * @brief Concrete Creator: Chicago Pizza Store.
+ *
+ * Pattern Role: Concrete Creator.
+ * Factory for Chicago-style pizzas.
+ */
+typedef struct ChicagoPizzaStore {
   PizzaStore super;
-}ChicagoPizzaStore;
+} ChicagoPizzaStore;
 
-static Pizza * const chicagoPizzaStore_createPizza(PizzaStore * const me, const char * const type){
-     if(strcmp(type,"cheese") == 0) {
-		  ChicagoStyleCheesePizza * const pizza = (ChicagoStyleCheesePizza *)malloc (sizeof(ChicagoStyleCheesePizza));
-          ChicagoStyleCheesePizza_ctor(pizza,"chicago Style Deep Dish Cheese Pizza", "Extra Thin Crust Dough","Plum Tomato Sauce");
-	      	  
-          AllocatedObject[count++]= (void*)pizza;
+static Pizza* const chicagoPizzaStore_createPizza(PizzaStore* const me,
+                                                  const char* const type) {
+  if (strcmp(type, "cheese") == 0) {
+    ChicagoStyleCheesePizza* const pizza =
+        (ChicagoStyleCheesePizza*)malloc(sizeof(ChicagoStyleCheesePizza));
+    ChicagoStyleCheesePizza_ctor(pizza, "chicago Style Deep Dish Cheese Pizza",
+                                 "Extra Thin Crust Dough", "Plum Tomato Sauce");
 
-		  return (Pizza * const) pizza;
-	 }
-     else return NULL;
+    AllocatedObject[count++] = (void*)pizza;
+
+    return (Pizza* const)pizza;
+  } else
+    return NULL;
 }
-void ChicagoPizzaStore_ctor(ChicagoPizzaStore * const me){
-	static PizTbl const pizTbl = {
+void ChicagoPizzaStore_ctor(ChicagoPizzaStore* const me) {
+  static PizTbl const pizTbl = {
 
-     	.createPizza = chicagoPizzaStore_createPizza
-	};
+      .createPizza = chicagoPizzaStore_createPizza};
 
-	PizzaStore_ctor(&me->super);
+  PizzaStore_ctor(&me->super);
 
-	me->super.vptr = &pizTbl;
-	
-	
+  me->super.vptr = &pizTbl;
 }
 
-typedef struct NYPizzaStore
-{
+/**
+ * @brief Concrete Creator: NY Pizza Store.
+ *
+ * Pattern Role: Concrete Creator.
+ * Factory for NY-style pizzas.
+ */
+typedef struct NYPizzaStore {
   PizzaStore super;
-}NYPizzaStore;
+} NYPizzaStore;
 
-static Pizza * const nyPizzaStore_createPizza(PizzaStore * const me, const char * const type){
-     if(strcmp(type,"cheese") == 0) {
-		  NYSTyleCheesePizza* const pizza = (NYSTyleCheesePizza * )malloc (sizeof(NYSTyleCheesePizza ));
-          NYSTyleCheesePizza_ctor(pizza,"NY Style Sauce and Cheese Pizza", "Thin Crust Dough","Marrinara sauce");
-	      	  
-          AllocatedObject[count++]= (void*)pizza;
-		  return (Pizza * const )pizza;
-	 }else return NULL;
+static Pizza* const nyPizzaStore_createPizza(PizzaStore* const me,
+                                             const char* const type) {
+  if (strcmp(type, "cheese") == 0) {
+    NYSTyleCheesePizza* const pizza =
+        (NYSTyleCheesePizza*)malloc(sizeof(NYSTyleCheesePizza));
+    NYSTyleCheesePizza_ctor(pizza, "NY Style Sauce and Cheese Pizza",
+                            "Thin Crust Dough", "Marrinara sauce");
 
+    AllocatedObject[count++] = (void*)pizza;
+    return (Pizza* const)pizza;
+  } else
+    return NULL;
 }
-void NYPizzaStore_ctor(NYPizzaStore* const me){
-	static PizTbl const pizTbl = {
+void NYPizzaStore_ctor(NYPizzaStore* const me) {
+  static PizTbl const pizTbl = {
 
-      .createPizza =  nyPizzaStore_createPizza
-	};
+      .createPizza = nyPizzaStore_createPizza};
 
-	PizzaStore_ctor(&me->super);
+  PizzaStore_ctor(&me->super);
 
-	me->super.vptr = &pizTbl;
-	
-	
+  me->super.vptr = &pizTbl;
 }
 
-int main(){
-    
-	NYPizzaStore nyStore;
-	NYPizzaStore_ctor(&nyStore);
+int main() {
+  NYPizzaStore nyStore;
+  NYPizzaStore_ctor(&nyStore);
 
-	Pizza * pizza;
-	pizza = pizzaStore_orderPizza((PizzaStore * const )&nyStore, "cheese");
-   
-	printf(" Ethan ordered a %s\n",pizza_getName(pizza));
-    
-    ChicagoPizzaStore chicagoStore;
-	ChicagoPizzaStore_ctor(&chicagoStore);
+  Pizza* pizza;
+  pizza = pizzaStore_orderPizza((PizzaStore* const)&nyStore, "cheese");
 
-	Pizza * chipizza;
-	chipizza = pizzaStore_orderPizza((PizzaStore * const )&chicagoStore, "cheese");
-    
-    printf(" Joel ordered a %s\n",pizza_getName(chipizza));
-    //free
-	for( ; count>-1; count--){
-       free(AllocatedObject[count]);
-	   
-	}
-  
+  printf(" Ethan ordered a %s\n", pizza_getName(pizza));
 
+  ChicagoPizzaStore chicagoStore;
+  ChicagoPizzaStore_ctor(&chicagoStore);
 
-return 0;
+  Pizza* chipizza;
+  chipizza = pizzaStore_orderPizza((PizzaStore* const)&chicagoStore, "cheese");
+
+  printf(" Joel ordered a %s\n", pizza_getName(chipizza));
+  // free
+  for (; count > -1; count--) {
+    free(AllocatedObject[count]);
+  }
+
+  return 0;
 }

@@ -1,23 +1,28 @@
+/**
+ * Concrete Decorator: Soy.
+ * <p>
+ * Adds soy milk to a beverage.
+ * <p>
+ * <b>Pattern Role:</b> Concrete Decorator.
+ */
+public class Soy extends CondimentDecorator {
 
+  Beverage beverage;
 
-public class Soy extends CondimentDecorator{
+  public Soy(Beverage b) {
+    // TODO Auto-generated method stub
+    beverage = b;
+  }
 
-	Beverage beverage;
-	public Soy(Beverage b) {
-		// TODO Auto-generated method stub
-		beverage = b;
-	}
-	
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return beverage.getDescription() + " Soy";
-	}
+  @Override
+  public String getDescription() {
+    // TODO Auto-generated method stub
+    return beverage.getDescription() + " Soy";
+  }
 
-	@Override
-	public Double cost() {
-		// TODO Auto-generated method stub
-		return beverage.cost() + 123.23;
-	}
-
+  @Override
+  public Double cost() {
+    // TODO Auto-generated method stub
+    return beverage.cost() + 123.23;
+  }
 }

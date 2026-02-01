@@ -1,18 +1,29 @@
-
+/**
+ * Concrete Visitor: Action Visitor.
+ * <p>
+ * Implements operations that perform actions on car elements.
+ * <p>
+ * <b>Pattern Role:</b> Concrete Visitor.
+ * <p>
+ * This visitor "kicks" wheels, "starts" the engine, "moves" the body -
+ * demonstrating
+ * how different operations can be applied to the same object structure without
+ * modifying the element classes.
+ */
 public class CarElementDoVisitor implements ICarElementVisitor {
-    public void visit(Wheel wheel) {
-        System.out.println("Kicking my " + wheel.getName() + " wheel");
-    }
+  public void visit(Wheel wheel) {
+    System.out.println("Kicking my " + wheel.getName() + " wheel");
+  }
 
-    public void visit(Engine engine) {
-        System.out.println("Starting my engine");
-    }
+  public void visit(Engine engine) {
+    System.out.println("Starting my engine");
+  }
 
-    public void visit(Body body) {
-        System.out.println("Moving my body");
-    }
+  public void visit(Body body) {
+    System.out.println("Moving my body");
+  }
 
-    public void visit(Car car) {
-        System.out.println("Starting my car");
-    }
+  public void visit(Car car) {
+    System.out.println("Starting my car");
+  }
 }

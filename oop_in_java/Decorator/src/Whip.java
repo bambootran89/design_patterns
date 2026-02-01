@@ -1,23 +1,28 @@
+/**
+ * Concrete Decorator: Whip.
+ * <p>
+ * Adds whipped cream to a beverage.
+ * <p>
+ * <b>Pattern Role:</b> Concrete Decorator.
+ */
+public class Whip extends CondimentDecorator {
 
+  Beverage beverage;
 
-public class Whip extends CondimentDecorator{
+  public Whip(Beverage b) {
+    // TODO Auto-generated method stub
+    beverage = b;
+  }
 
-	Beverage beverage;
-	public Whip(Beverage b) {
-		// TODO Auto-generated method stub
-		beverage = b;
-	}
-	
-	@Override
-	public String getDescription() {
-		// TODO Auto-generated method stub
-		return beverage.getDescription() + " Whip";
-	}
+  @Override
+  public String getDescription() {
+    // TODO Auto-generated method stub
+    return beverage.getDescription() + " Whip";
+  }
 
-	@Override
-	public Double cost() {
-		// TODO Auto-generated method stub
-		return beverage.cost() + 23.23;
-	}
-
+  @Override
+  public Double cost() {
+    // TODO Auto-generated method stub
+    return beverage.cost() + 23.23;
+  }
 }
