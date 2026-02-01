@@ -1,0 +1,141 @@
+# Strategy Pattern
+
+## Intent
+
+Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+
+## Problem
+
+You have multiple ways to perform an operation and want to choose the appropriate algorithm at runtime without using conditional statements.
+
+## Solution
+
+Define a family of algorithms as separate classes with a common interface. The client can choose which algorithm to use by composition rather than inheritance.
+
+## Structure
+
+```mermaid
+classDiagram
+    class Context {
+        -strategy: Strategy
+        +setStrategy(Strategy)
+        +executeStrategy()
+    }
+    class Strategy {
+        <<interface>>
+        +execute()
+    }
+    class ConcreteStrategyA {
+        +execute()
+    }
+    class ConcreteStrategyB {
+        +execute()
+    }
+    Context --> Strategy
+    Strategy <|-- ConcreteStrategyA
+    Strategy <|-- ConcreteStrategyB
+```
+
+## Implementation
+
+### Java Example
+
+```java
+// Strategy interface
+public interface FlyBehavior {
+    void fly();
+}
+
+// Concrete Strategies
+public class FlyWithWings implements FlyBehavior {
+    public void fly() {
+        System.out.println("Flying with wings!");
+    }
+}
+
+public class FlyNoWay implements FlyBehavior {
+    public void fly() {
+        System.out.println("Can't fly");
+    }
+}
+
+// Context
+public class Duck {
+    private FlyBehavior flyBehavior;
+    
+    public void setFlyBehavior(FlyBehavior fb) {
+        flyBehavior = fb;
+    }
+    
+    public void performFly() {
+        flyBehavior.fly();
+    }
+}
+
+// Usage
+Duck mallard = new Duck();
+mallard.setFlyBehavior(new FlyWithWings());
+mallard.performFly();  // Flying with wings!
+
+mallard.setFlyBehavior(new FlyNoWay());
+mallard.performFly();  // Can't fly
+```
+
+### C Example
+
+```c
+typedef struct FlyBehavior {
+    void (*fly)(void);
+} FlyBehavior;
+
+typedef struct Duck {
+    FlyBehavior* flyBehavior;
+} Duck;
+
+void FlyWithWings_fly(void) {
+    printf("Flying with wings!\n");
+}
+
+void Duck_performFly(Duck* duck) {
+    duck->flyBehavior->fly();
+}
+```
+
+## Use Cases
+
+- **Sorting algorithms**: Choose QuickSort, MergeSort, BubbleSort based on data size
+- **Compression**: Different compression algorithms (ZIP, RAR, GZIP)
+- **Payment methods**: Credit card, PayPal, Bitcoin
+- **Navigation**: Different route calculation strategies (shortest, fastest, scenic)
+- **Validation**: Different validation rules based on context
+
+## Participants
+
+- **Strategy**: Declares common interface for all supported algorithms
+- **ConcreteStrategy**: Implements the algorithm using the Strategy interface
+- **Context**: Maintains reference to Strategy object, configured with ConcreteStrategy
+
+## Consequences
+
+**Benefits:**
+- Eliminates conditional statements
+- Encapsulates algorithm implementation details
+- Algorithms can be switched at runtime
+- Easy to add new strategies
+
+**Drawbacks:**
+- Clients must be aware of different strategies
+- Increases number of objects
+- Communication overhead between Strategy and Context
+
+## Related Patterns
+
+- **State**: Strategy changes behavior; State represents different states
+- **Decorator**: Changes object's skin; Strategy changes guts
+- **Template Method**: Uses inheritance; Strategy uses composition
+
+## See Also
+
+- Implementation: `/oop_in_java/Strategy/`
+- Implementation: `/oop_in_c/Strategy/`
+- Tests: `/tests/java/TestStrategy.java`, `/tests/c/TestStrategy.c`
