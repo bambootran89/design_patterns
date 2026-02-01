@@ -64,10 +64,19 @@ void customer_set(Customer * const me, BillingStrategy * const strategy_){
 }
 
 
+double Customer_getSum(Customer * const me){
+    double sum = 0;
+    int i = 0;
+    for(i = 0; i < me->numList; i++){
+		sum += me->list[i];
+	}
+    return sum;
+}
+
 void customer_printBill(Customer * const me){
     double sum = 0;
     int i = 0;
-    for(i = 0; i<= me->numList; i++){
+    for(i = 0; i < me->numList; i++){
 		sum += me->list[i];
 	}
 

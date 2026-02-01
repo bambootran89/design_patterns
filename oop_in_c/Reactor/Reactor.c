@@ -4,7 +4,7 @@
 #include<poll.h>
 #include<signal.h>
 
-#define INFTIM -1
+#define INFTIM 10
 
 #define MAX_NO_OF_HANDLES 100
 typedef int Handle;
@@ -78,7 +78,7 @@ static void dispatchSignalledHandles(const struct pollfd* fds, size_t noOfHandle
 	size_t i =0;
 	for(i =0 ; i< noOfHandles ; i++ ){
 		if((POLLRDNORM | POLLERR ) & fds[i].revents) {
-			EventHandler * signalledHandler =  findHangler(fds[i].fd);
+			EventHandler * signalledHandler =  findHandler(fds[i].fd);
 
 			if(NULL!= signalledHandler){
 				signalledHandler->handleEvent(signalledHandler->instance);	
@@ -102,11 +102,31 @@ void HandleEvents(void){
 
 }
 
+
+static void addToRegistry(EventHandler * handler){
+    // Stub
+}
+
+static void removeFromRegistery(EventHandler * handler){
+    // Stub
+}
+
+static size_t buildPollArray(struct pollfd* fds){
+    // Stub
+    return 0;
+}
+
+static EventHandler* findHandler(int fd){
+    // Stub
+    return NULL;
+}
+
 int main(){
     const unsigned int serverPort = 0xc001;
 	DiagnosticsServer server; DiagnosticsServer_ctor(&server,serverPort);
 
-	for(;;)
+	int i;
+	for(i=0; i<10; i++)
 		HandleEvents();
 	return 0;
 }
