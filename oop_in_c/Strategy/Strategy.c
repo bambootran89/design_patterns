@@ -22,7 +22,7 @@
  */
 typedef struct BillingStrategy {
   const struct BillingStrategy* const this;
-  double (*getActPrice)(struct BillingStrategy* const me, double rawPrice);
+  double (*getActPrice)(const struct BillingStrategy* const me, double rawPrice);
 } BillingStrategy;
 
 /**
@@ -86,7 +86,7 @@ void NormalStrategy_ctor(NormalStrategy* const me) {
   me->super = &billingStratery;
 }
 
-double getActPrice(BillingStrategy* const me, double rawPrice) {
+double getActPrice(const BillingStrategy* const me, double rawPrice) {
   return me->this->getActPrice(me, rawPrice);
 }
 /**
@@ -112,10 +112,10 @@ double getActPrice(BillingStrategy* const me, double rawPrice) {
 typedef struct Customer {
   double list[MAX];
   int numList;
-  BillingStrategy* strategy;
+  const BillingStrategy* strategy;
 } Customer;
 
-void Customer_ctor(Customer* const me, BillingStrategy* const strategy_) {
+void Customer_ctor(Customer* const me, const BillingStrategy* const strategy_) {
   me->strategy = strategy_;
   me->numList = 0;
 }
@@ -123,7 +123,7 @@ void customer_add(Customer* const me, double price, int qualities) {
   me->list[(me->numList)++] = getActPrice(me->strategy, price) * qualities;
 }
 
-void customer_set(Customer* const me, BillingStrategy* const strategy_) {
+void customer_set(Customer* const me, const BillingStrategy* const strategy_) {
   me->strategy = strategy_;
 }
 

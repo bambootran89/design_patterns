@@ -126,7 +126,8 @@ static EventHandler* findHandler(int fd) {
   // or return a dummy address if we want to test that path.
   // For cppcheck "always false" warning, we can make it conditional or opaque.
   // For now, let's keep it NULL but suppress via inline if possible,
-  // OR just make it return a static variable address to allow the check to pass logically.
+  // OR just make it return a static variable address to allow the check to pass
+  // logically.
   static EventHandler dummy;
   if (fd == -1) return &dummy;
   return NULL;

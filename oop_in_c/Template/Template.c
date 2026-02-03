@@ -86,7 +86,6 @@ void coffeeWithHook_addCodiments(CaffeineBeverageWithHook* const me) {
   printf("Adding sugar and milk ... \n");
 }
 
-
 void coffeeWithHook_brew(CaffeineBeverageWithHook* const me) {
   printf("Dripping coffee throuh filter ...\n");
 }
