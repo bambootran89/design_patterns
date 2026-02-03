@@ -33,7 +33,7 @@ int pizza_add(Pizza* const me, const char* const topping) {
   (me->num)++;
   return 0;
 }
-void pizza_prepare(Pizza* const me) {
+void pizza_prepare(const Pizza* const me) {
   int i;
   printf("Preparing ... %s\n", me->name);
   printf("Tossing dough ... %s\n", me->dough);
@@ -48,7 +48,7 @@ void pizza_bake(Pizza* const me) { printf("Bake for 25 minutes at 350\n"); }
 void pizza_cut(Pizza* const me) { printf("Cutting the pizza into diagonal slices\n"); }
 void pizza_box(Pizza* const me) { printf("Place pizza on official PizzaStore box\n"); }
 
-const char* const pizza_getName(Pizza* const me) { return me->name; }
+const char* const pizza_getName(const Pizza* const me) { return me->name; }
 
 /**
  * @brief Concrete Product: NY Style Cheese Pizza.

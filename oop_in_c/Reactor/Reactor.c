@@ -65,7 +65,6 @@ void DiagnosticsServer_ctor(DiagnosticsServer* const me, unsigned int port) {
  * Tracks registered handlers for event demultiplexing.
  */
 typedef struct HandlerRegistration {
-  EventHandler handler;
   struct pollfd fd;
 
 } HandlerRegistration;
@@ -88,7 +87,7 @@ static void dispatchSignalledHandles(const struct pollfd* fds, size_t noOfHandle
   for (i = 0; i < noOfHandles; i++) {
     if ((POLLRDNORM | POLLERR) & fds[i].revents) {
       EventHandler* signalledHandler = findHandler(fds[i].fd);
-
+      // cppcheck-suppress knownConditionTrueFalse
       if (NULL != signalledHandler) {
         signalledHandler->handleEvent(signalledHandler->instance);
       }

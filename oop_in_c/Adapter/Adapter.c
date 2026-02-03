@@ -21,7 +21,7 @@ typedef struct {
   int timelife;
 } Furniture;
 static void furniture_packageObject(const struct SolidObject* me) {
-  Furniture* const me_ = (Furniture*)me;
+  const Furniture* const me_ = (const Furniture*)me;
   printf(" Putting Furniture %s to the van\n", me_->name);
 }
 void furniture_ctor(Furniture* const me, const char* const name_) {
@@ -37,7 +37,7 @@ typedef struct {
   char name[100];
 } Book;
 static void book_packageObject(const struct SolidObject* me) {
-  Book* const me_ = (Book*)me;
+  const Book* const me_ = (const Book*)me;
   printf(" Putting Book %s to the van\n", me_->name);
 }
 void book_ctor(Book* const me, const char* const name_) {

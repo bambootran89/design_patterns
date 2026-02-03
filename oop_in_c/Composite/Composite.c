@@ -74,7 +74,7 @@ typedef struct LeafGraphic {
 } LeafGraphic;
 
 void leafGraphic_print(Graphic* const me_) {
-  LeafGraphic* const me = (LeafGraphic* const)me_;
+  const LeafGraphic* const me = (const LeafGraphic* const)me_;
   printf("this is LeafGraphic %s \n", me->name);
 }
 

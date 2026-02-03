@@ -44,7 +44,7 @@ void Beverage_ctor(Beverage* const me, const char* const name_, const char t) {
   strcpy(me->name, name_);
 }
 
-const char* const beverage_getDescription(Beverage* const me) { return me->name; }
+const char* const beverage_getDescription(const Beverage* const me) { return me->name; }
 
 /**
  * @brief Concrete Component (Espresso).

@@ -91,7 +91,7 @@ void weatherData_setChanged(Observable* const me_, double tem, double hum,
 }
 
 void weatherData_getInfo(Observable* const me_, char* const str) {
-  WeatherData* const me = (WeatherData* const)me_;
+  const WeatherData* const me = (const WeatherData* const)me_;
   snprintf(str, 100, "temperature %lf humidity %lf pressure %lf ", me->temperature,
            me->humidity, me->pressure);
 }

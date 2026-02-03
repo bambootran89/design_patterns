@@ -56,11 +56,11 @@ struct Sony {
 };
 
 static void sony_turningChannel(struct TV* const me, int channel) {
-  struct Sony* const me_ = (struct Sony*)me;
+  const struct Sony* const me_ = (const struct Sony*)me;
   printf(" Processing turning channel to %d for %s\n", channel, me_->name);
 }
 
-void Sony_ctor(struct Sony* const me, int inch, char* name_) {
+void Sony_ctor(struct Sony* const me, int inch, const char* name_) {
   static struct TVVtbl const vtbl = {.turnChannel = sony_turningChannel};
   TV_ctor(&me->super, inch);
   me->super.vptr = &vtbl;
@@ -75,11 +75,11 @@ struct RCATv {
 };
 
 static void rcatv_turningChannel(struct TV* const me, int channel) {
-  struct RCATv* const me_ = (struct RCATv*)me;
+  const struct RCATv* const me_ = (const struct RCATv*)me;
   printf(" Processing turning channel to %d for %s\n", channel, me_->name);
 }
 
-void RCATv_ctor(struct RCATv* const me, int inch, char* name_) {
+void RCATv_ctor(struct RCATv* const me, int inch, const char* name_) {
   static struct TVVtbl const vtbl = {.turnChannel = rcatv_turningChannel};
   TV_ctor(&me->super, inch);
   me->super.vptr = &vtbl;

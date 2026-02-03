@@ -34,7 +34,7 @@ typedef struct {
 } OSXButton;
 
 static void osxButton_pain(const struct IButton* me) {
-  OSXButton* const me_ = (OSXButton*)me;
+  const OSXButton* const me_ = (const OSXButton*)me;
   printf("paining OSXButton id = %d\n", me_->id);
 }
 
@@ -76,7 +76,7 @@ typedef struct {
 } WINButton;
 
 void winButton_pain(const struct IButton* me) {
-  WINButton* const me_ = (WINButton*)me;
+  const WINButton* const me_ = (const WINButton*)me;
   printf("paining WINButton with id = %d \n", me_->id);
 }
 void WINButton_ctor(WINButton* const me, int id_) {

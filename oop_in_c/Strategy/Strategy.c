@@ -48,7 +48,7 @@ typedef struct HappyHourStrategy {
 
 static double happyHourStratery_getActPrice(BillingStrategy* const me_,
                                             double rawPrice) {
-  HappyHourStrategy* const me = (HappyHourStrategy* const)me_;
+  const HappyHourStrategy* const me = (const HappyHourStrategy* const)me_;
   return rawPrice * me->discount;
 }
 
@@ -146,7 +146,7 @@ void customer_printBill(Customer* const me) {
   printf(" Total due: %lf\n", sum);
   me->numList = 0;
 }
-main() {
+int main() {
   HappyHourStrategy happyStrategy;
   HappyHourStrategy_ctor(&happyStrategy, 0.5);
 
