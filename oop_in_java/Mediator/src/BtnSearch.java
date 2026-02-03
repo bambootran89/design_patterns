@@ -1,16 +1,14 @@
-
-/**
- * Colleague: Search Button.
- * <p>
- * Search button coordinated by Mediator.
- * <p>
- * <b>Pattern Role:</b> Concrete Colleague.
- */
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
+/**
+ * Colleague: Search Button.
+ *
+ * <p>Search button coordinated by Mediator.
+ *
+ * <p><b>Pattern Role:</b> Concrete Colleague.
+ */
 class BtnSearch extends JButton implements Command {
-
   Mediator med;
 
   BtnSearch(ActionListener al, Mediator m) {

@@ -1,9 +1,9 @@
 /**
  * Subsystem: CPU.
- * <p>
- * CPU component hidden behind ComputerFacade.
- * <p>
- * <b>Pattern Role:</b> Subsystem.
+ *
+ * <p>CPU component hidden behind ComputerFacade.
+ *
+ * <p><b>Pattern Role:</b> Subsystem.
  */
 public class CPU {
   public void freeze() {

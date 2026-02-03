@@ -20,8 +20,8 @@ struct Pizza {
   char toppings[MAX][100];
   int num;
 };
-void Pizza_ctor(Pizza* const me, const char* const name_,
-                const char* const dough_, const char* const sauce_) {
+void Pizza_ctor(Pizza* const me, const char* const name_, const char* const dough_,
+                const char* const sauce_) {
   strcpy(me->name, name_);
   strcpy(me->dough, dough_);
   strcpy(me->sauce, sauce_);
@@ -31,12 +31,13 @@ void Pizza_ctor(Pizza* const me, const char* const name_,
 int pizza_add(Pizza* const me, const char* const topping) {
   strcpy(me->toppings[me->num], topping);
   (me->num)++;
+  return 0;
 }
 void pizza_prepare(Pizza* const me) {
   int i;
   printf("Preparing ... %s\n", me->name);
-  printf("Tossing dough ...\n", me->dough);
-  printf("Adding sauce ...\n", me->sauce);
+  printf("Tossing dough ... %s\n", me->dough);
+  printf("Adding sauce ... %s\n", me->sauce);
   printf("Adding topping: ");
   for (i = 0; i <= me->num; i++) printf(" %s", me->toppings[i]);
 
@@ -44,12 +45,8 @@ void pizza_prepare(Pizza* const me) {
 }
 void pizza_bake(Pizza* const me) { printf("Bake for 25 minutes at 350\n"); }
 
-void pizza_cut(Pizza* const me) {
-  printf("Cutting the pizza into diagonal slices\n");
-}
-void pizza_box(Pizza* const me) {
-  printf("Place pizza on official PizzaStore box\n");
-}
+void pizza_cut(Pizza* const me) { printf("Cutting the pizza into diagonal slices\n"); }
+void pizza_box(Pizza* const me) { printf("Place pizza on official PizzaStore box\n"); }
 
 const char* const pizza_getName(Pizza* const me) { return me->name; }
 
@@ -64,9 +61,8 @@ typedef struct NYSTyleCheesePizza {
 
 } NYSTyleCheesePizza;
 
-void NYSTyleCheesePizza_ctor(NYSTyleCheesePizza* const me,
-                             const char* const name_, const char* const dough_,
-                             const char* const sauce_) {
+void NYSTyleCheesePizza_ctor(NYSTyleCheesePizza* const me, const char* const name_,
+                             const char* const dough_, const char* const sauce_) {
   Pizza_ctor(&me->super, name_, dough_, sauce_);
 
   pizza_add(&me->super, "Granted Reffiano cheese");
@@ -84,8 +80,7 @@ typedef struct ChicagoStyleCheesePizza {
 } ChicagoStyleCheesePizza;
 
 void ChicagoStyleCheesePizza_ctor(ChicagoStyleCheesePizza* const me,
-                                  const char* const name_,
-                                  const char* const dough_,
+                                  const char* const name_, const char* const dough_,
                                   const char* const sauce_) {
   Pizza_ctor(&me->super, name_, dough_, sauce_);
 
@@ -108,15 +103,13 @@ typedef struct PizzaStore PizzaStore;
 typedef struct PizTbl PizTbl;
 
 struct PizTbl {
-  Pizza* const (*createPizza)(struct PizzaStore* const me,
-                              const char* const type);
+  Pizza* const (*createPizza)(struct PizzaStore* const me, const char* const type);
 };
 struct PizzaStore {
   const PizTbl* vptr;
 };
 
-Pizza* const pizzaStore_orderPizza(PizzaStore* const me,
-                                   const char* const type_) {
+Pizza* const pizzaStore_orderPizza(PizzaStore* const me, const char* const type_) {
   Pizza* const pizza = me->vptr->createPizza(me, type_);
   if (pizza != NULL) {
     pizza_prepare(pizza);

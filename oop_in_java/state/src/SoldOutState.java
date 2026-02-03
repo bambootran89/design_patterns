@@ -9,7 +9,6 @@
  * in this state until restocked.
  */
 public class SoldOutState implements State {
-
   GumballMachine gumBallMachine;
 
   public SoldOutState(GumballMachine gumb) {

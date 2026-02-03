@@ -1,9 +1,11 @@
 /** Client: loads and demonstrates the Command pattern remote control. */
 public class RemoteLoader {
-
-  /** @param args */
+  /**
+   * Main entry point.
+   *
+   * @param args command line arguments
+   */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
     RemoteControl remoteControl = new RemoteControl();
 
     Light light = new Light();
@@ -11,15 +13,16 @@ public class RemoteLoader {
 
     LightOnCommand lightOnCommand = new LightOnCommand(light);
     LightOffCommand lightOffCommand = new LightOffCommand(light);
-    StereoOffCommamd stereoOffCommand = new StereoOffCommamd(stereo);
-    StereoOnWithCdCommamd stereoOnWithCdCommand = new StereoOnWithCdCommamd(stereo);
-    StereoOnWithDvdCommamd stereOnWithDvdCommamd = new StereoOnWithDvdCommamd(stereo);
-    StereoOnWithRadioCommamd stereoOnWithRadioCommamd = new StereoOnWithRadioCommamd(stereo);
+    StereoOffCommand stereoOffCommand = new StereoOffCommand(stereo);
+    StereoOnWithCdCommand stereoOnWithCdCommand = new StereoOnWithCdCommand(stereo);
+    StereoOnWithDvdCommand stereOnWithDvdCommand = new StereoOnWithDvdCommand(stereo);
+    StereoOnWithRadioCommand stereoOnWithRadioCommand =
+        new StereoOnWithRadioCommand(stereo);
 
     remoteControl.setCommand(0, lightOnCommand, lightOffCommand);
     remoteControl.setCommand(1, stereoOnWithCdCommand, stereoOffCommand);
-    remoteControl.setCommand(2, stereOnWithDvdCommamd, stereoOffCommand);
-    remoteControl.setCommand(3, stereoOnWithRadioCommamd, stereoOffCommand);
+    remoteControl.setCommand(2, stereOnWithDvdCommand, stereoOffCommand);
+    remoteControl.setCommand(3, stereoOnWithRadioCommand, stereoOffCommand);
 
     System.out.println(remoteControl);
 

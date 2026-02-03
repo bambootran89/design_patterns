@@ -11,9 +11,10 @@
  *
  * @details
  * This structure utilizes a function pointer table (simulating a VTable in C)
- * to achieve polymorphism. Concrete strategies (e.g., `HappyHourStrategy`, `NormalStrategy`)
- * "inherit" from this by embedding it or adhering to its binary layout, allowing
- * the Context (`Customer`) to invoke `getActPrice` without knowing the specific implementation.
+ * to achieve polymorphism. Concrete strategies (e.g., `HappyHourStrategy`,
+ * `NormalStrategy`) "inherit" from this by embedding it or adhering to its binary
+ * layout, allowing the Context (`Customer`) to invoke `getActPrice` without knowing the
+ * specific implementation.
  *
  * @see Customer
  * @see HappyHourStrategy
@@ -31,8 +32,8 @@ typedef struct BillingStrategy {
  * factor (typically 50%).
  *
  * @details
- * In the Strategy Design Pattern, this structure corresponds to a **Concrete Strategy**.
- * It encapsulates the specific business logic for promotional pricing.
+ * In the Strategy Design Pattern, this structure corresponds to a **Concrete
+ * Strategy**. It encapsulates the specific business logic for promotional pricing.
  *
  * Key features:
  * - Extends `BillingStrategy` via composition/pointer logic.
@@ -68,15 +69,14 @@ void HappyHourStrategy_ctor(HappyHourStrategy* const me, double discount_) {
  * Unlike `HappyHourStrategy`, this implementation creates a baseline behavior
  * (identity transformation on price).
  *
- * It demonstrates how different algorithms can be interchangeable within the `Customer` context
- * despite having different internal complexity (this one has no state).
+ * It demonstrates how different algorithms can be interchangeable within the `Customer`
+ * context despite having different internal complexity (this one has no state).
  */
 typedef struct NormalStrategy {
   const BillingStrategy* super;
 } NormalStrategy;
 
-static double normalStratery_getActPrice(BillingStrategy* const me_,
-                                         double rawPrice) {
+static double normalStratery_getActPrice(BillingStrategy* const me_, double rawPrice) {
   return rawPrice;
 }
 
@@ -92,9 +92,9 @@ double getActPrice(BillingStrategy* const me, double rawPrice) {
 /**
  * @brief Context: The Client consuming the Strategy.
  *
- * The `Customer` structure represents the **Context** participant in the Strategy Pattern.
- * It is configured with a `BillingStrategy` object and delegates the price calculation
- * to it.
+ * The `Customer` structure represents the **Context** participant in the Strategy
+ * Pattern. It is configured with a `BillingStrategy` object and delegates the price
+ * calculation to it.
  *
  * @details
  * By holding a pointer to the abstract `BillingStrategy`, the `Customer` class remains

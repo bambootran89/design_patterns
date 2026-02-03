@@ -46,7 +46,6 @@ static Handle getServerSocket(void* instance) {
 }
 
 static void handleConnectRequest(void* instance) {
-  DiagnosticsServer* server = instance;
   printf(" Handling connecting request ...\n");
 }
 
@@ -84,8 +83,7 @@ static size_t buildPollArray(struct pollfd* fds);
 
 static EventHandler* findHandler(int fd);
 
-static void dispatchSignalledHandles(const struct pollfd* fds,
-                                     size_t noOfHandles) {
+static void dispatchSignalledHandles(const struct pollfd* fds, size_t noOfHandles) {
   size_t i = 0;
   for (i = 0; i < noOfHandles; i++) {
     if ((POLLRDNORM | POLLERR) & fds[i].revents) {

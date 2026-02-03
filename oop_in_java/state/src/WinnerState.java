@@ -10,7 +10,6 @@
  * special behaviors beyond the standard flow.
  */
 public class WinnerState implements State {
-
   GumballMachine gumBallMachine;
 
   public WinnerState(GumballMachine gumb) {
@@ -44,13 +43,11 @@ public class WinnerState implements State {
       gumBallMachine.setState(gumBallMachine.getSoldOutState());
 
     } else {
-
       gumBallMachine.releaseBall();
       if (gumBallMachine.getCount() > 0) {
         gumBallMachine.setState(gumBallMachine.getNoQuarterState());
 
       } else {
-
         System.out.println("Oops, out of gumballs!");
         gumBallMachine.setState(gumBallMachine.getSoldOutState());
       }

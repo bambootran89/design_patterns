@@ -1,14 +1,12 @@
 /**
  * Concrete Observer: Forecast Display.
- * <p>
- * Displays weather forecast information.
- * <p>
- * <b>Pattern Role:</b> Concrete Observer.
+ *
+ * <p>Displays weather forecast information.
+ *
+ * <p><b>Pattern Role:</b> Concrete Observer.
  */
 public class ForecastDisplay implements Observer {
-
-  public void display() {
-  }
+  public void display() {}
 
   @Override
   public void update(Observable ob) {

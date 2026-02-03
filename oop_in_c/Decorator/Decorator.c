@@ -44,9 +44,7 @@ void Beverage_ctor(Beverage* const me, const char* const name_, const char t) {
   strcpy(me->name, name_);
 }
 
-const char* const beverage_getDescription(Beverage* const me) {
-  return me->name;
-}
+const char* const beverage_getDescription(Beverage* const me) { return me->name; }
 
 /**
  * @brief Concrete Component (Espresso).
@@ -163,16 +161,13 @@ struct CodimentDecorator {
 };
 void getDescriptionOfDecorator(Beverage* const me_, char* des);
 
-static void codimentDecorator_getDescription(CodimentDecorator* const me_,
-                                             char* des) {
+static void codimentDecorator_getDescription(CodimentDecorator* const me_, char* des) {
   strcat(des, beverage_getDescription(&me_->super));
 }
 static double codimentDecorator_cost(Beverage* const me) { return 0; }
 
-void CodimentDecorator_ctor(CodimentDecorator* const me,
-                            const char* const name_) {
-  static DecoVtbl const dvtbl = {.getDescription =
-                                     codimentDecorator_getDescription};
+void CodimentDecorator_ctor(CodimentDecorator* const me, const char* const name_) {
+  static DecoVtbl const dvtbl = {.getDescription = codimentDecorator_getDescription};
 
   static BeVtbl const vtbl = {.cost = codimentDecorator_cost};
 
@@ -209,8 +204,7 @@ static double milk_cost(Beverage* const me_) {
 
   return cost(me->beverage) + 45.23;
 }
-void Milk_ctor(Milk* const me, Beverage* const beverage_,
-               const char* const name_) {
+void Milk_ctor(Milk* const me, Beverage* const beverage_, const char* const name_) {
   static DecoVtbl const dvtbl = {.getDescription = milk_getDescription};
 
   static BeVtbl const vtbl = {.cost = milk_cost};
@@ -244,8 +238,7 @@ static double mocha_cost(Beverage* const me_) {
 
   return cost(me->beverage) + 4.23;
 }
-void Mocha_ctor(Mocha* const me, Beverage* const beverage_,
-                const char* const name_) {
+void Mocha_ctor(Mocha* const me, Beverage* const beverage_, const char* const name_) {
   static DecoVtbl const dvtbl = {.getDescription = mocha_getDescription};
 
   static BeVtbl const vtbl = {.cost = mocha_cost};
@@ -279,8 +272,7 @@ static double soy_cost(Beverage* const me_) {
 
   return cost(me->beverage) + 123.23;
 }
-void Soy_ctor(Soy* const me, Beverage* const beverage_,
-              const char* const name_) {
+void Soy_ctor(Soy* const me, Beverage* const beverage_, const char* const name_) {
   static DecoVtbl const dvtbl = {.getDescription = soy_getDescription};
 
   static BeVtbl const vtbl = {.cost = soy_cost};
@@ -314,8 +306,7 @@ static double whip_cost(Beverage* const me_) {
 
   return cost(me->beverage) + 45.23;
 }
-void Whip_ctor(Whip* const me, Beverage* const beverage_,
-               const char* const name_) {
+void Whip_ctor(Whip* const me, Beverage* const beverage_, const char* const name_) {
   static DecoVtbl const dvtbl = {.getDescription = whip_getDescription};
 
   static BeVtbl const vtbl = {.cost = whip_cost};

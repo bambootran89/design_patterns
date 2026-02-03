@@ -20,8 +20,7 @@ struct IButton {
  */
 struct IGUIFactory {
   const struct IGUIFactory* super;
-  void (*createButton)(const struct IGUIFactory* me,
-                       struct IButton* const button);
+  void (*createButton)(const struct IGUIFactory* me, struct IButton* const button);
 };
 
 /**
@@ -102,8 +101,8 @@ typedef struct {
 } WINFactory;
 
 void WINFactory_ctor(WINFactory* const me) {
-  static struct IGUIFactory iGUIFactory = {
-      &iGUIFactory, .createButton = winFactory_createButton};
+  static struct IGUIFactory iGUIFactory = {&iGUIFactory,
+                                           .createButton = winFactory_createButton};
   me->pFactory = &iGUIFactory;
 }
 
@@ -128,8 +127,7 @@ int main() {
   WINButton wButton;
   OSXButton osxButton;
 
-  struct IButton* button[2] = {(struct IButton*)&wButton,
-                               (struct IButton*)&osxButton};
+  struct IButton* button[2] = {(struct IButton*)&wButton, (struct IButton*)&osxButton};
 
   for (i = 0; i < 2; i++) {
     factory_createButton(factory[i], button[i]);

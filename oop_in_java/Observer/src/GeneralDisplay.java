@@ -1,14 +1,12 @@
 /**
  * Concrete Observer: General Display.
- * <p>
- * Displays general weather information.
- * <p>
- * <b>Pattern Role:</b> Concrete Observer.
+ *
+ * <p>Displays general weather information.
+ *
+ * <p><b>Pattern Role:</b> Concrete Observer.
  */
 public class GeneralDisplay implements Observer {
-
-  public void display() {
-  }
+  public void display() {}
 
   @Override
   public void update(Observable ob) {

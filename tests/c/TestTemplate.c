@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 int main() {
-    printf("Testing C Template...\n");
-    // Call pattern main
-    pattern_main();
-    printf("C Template Test Passed!\n");
-    return 0;
+  printf("Testing C Template...\n");
+  // Call pattern main
+  pattern_main();
+  printf("C Template Test Passed!\n");
+  return 0;
 }

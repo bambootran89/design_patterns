@@ -10,7 +10,6 @@
  * - Other operations display appropriate error messages
  */
 public class NoQuarterState implements State {
-
   GumballMachine gumBallMachine;
 
   public NoQuarterState(GumballMachine gumb) {

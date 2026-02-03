@@ -1,21 +1,20 @@
 /**
  * Facade: Computer Facade.
- * <p>
- * Provides a unified interface to a set of interfaces in a subsystem.
- * <p>
- * <b>Pattern Role:</b> Facade.
- * <p>
- * The Facade Pattern simplifies interaction with complex subsystems (CPU,
- * Memory, HardDrive)
- * by providing a higher-level interface. Clients call {@code start()} instead
- * of coordinating
- * multiple low-level operations (freeze, load, jump, execute).
- * <p>
- * Benefits:
- * - Reduces coupling between clients and subsystem classes.
- * - Makes the subsystem easier to use.
- * - Doesn't prevent clients from accessing subsystem classes directly if
- * needed.
+ *
+ * <p>Provides a unified interface to a set of interfaces in a subsystem.
+ *
+ * <p><b>Pattern Role:</b> Facade.
+ *
+ * <p>The Facade Pattern simplifies interaction with complex subsystems (CPU, Memory,
+ * HardDrive) by providing a higher-level interface. Clients call {@code start()}
+ * instead of coordinating multiple low-level operations (freeze, load, jump, execute).
+ *
+ * <p>Benefits:
+ * <ul>
+ *   <li>Reduces coupling between clients and subsystem classes.
+ *   <li>Makes the subsystem easier to use.
+ *   <li>Doesn't prevent clients from accessing subsystem classes directly if needed.
+ * </ul>
  */
 public class ComputerFacade {
   private static final long BOOT_ADDRESS = 0x892998;

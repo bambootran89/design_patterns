@@ -5,7 +5,8 @@
 /**
  * @brief Virtual Table for Template Method Pattern.
  *
- * Defines function pointers for the primitive operations that subclasses must implement.
+ * Defines function pointers for the primitive operations that subclasses must
+ * implement.
  *
  * @details
  * <b>Pattern Role:</b> VTable (C's mechanism for polymorphism).
@@ -22,7 +23,8 @@ typedef struct VTable VTable;
  *
  * @details
  * <b>Pattern Role:</b> Abstract Class.
- * The `prepareRecipe()` function acts as the template method, defining the algorithm skeleton:
+ * The `prepareRecipe()` function acts as the template method, defining the algorithm
+ * skeleton:
  * 1. boilWater (concrete)
  * 2. brew (abstract - via VTable)
  * 3. pourInCup (concrete)
@@ -40,17 +42,11 @@ struct CaffeineBeverageWithHook {
   const VTable* vptr;
 };
 
-void boilwater(CaffeineBeverageWithHook* const me_) {
-  printf(" Pouring into cup\n");
-}
+void boilwater(CaffeineBeverageWithHook* const me_) { printf(" Pouring into cup\n"); }
 
-int abstract_customerWantsCodiments(CaffeineBeverageWithHook* const me) {
-  return 1;
-}
+int abstract_customerWantsCodiments(CaffeineBeverageWithHook* const me) { return 1; }
 
-void pourInCup(CaffeineBeverageWithHook* const me_) {
-  printf("Boiling water\n");
-}
+void pourInCup(CaffeineBeverageWithHook* const me_) { printf("Boiling water\n"); }
 void abstract_addCodiments(CaffeineBeverageWithHook* const me) { return; }
 
 void abstract_brew(CaffeineBeverageWithHook* const me) { return; }
@@ -87,8 +83,9 @@ typedef struct CoffeeWithHook {
 } CoffeeWithHook;
 
 void coffeeWithHook_addCodiments(CaffeineBeverageWithHook* const me) {
-  printf("Adding suger and milk ... \n");
+  printf("Adding sugar and milk ... \n");
 }
+
 
 void coffeeWithHook_brew(CaffeineBeverageWithHook* const me) {
   printf("Dripping coffee throuh filter ...\n");
@@ -133,11 +130,11 @@ typedef struct TeaWithHook {
 } TeaWithHook;
 
 void teaWithHook_addCodiments(CaffeineBeverageWithHook* const me) {
-  printf("Adding suger and milk ... \n");
+  printf("Adding sugar and milk ... \n");
 }
 
 void teaWithHook_brew(CaffeineBeverageWithHook* const me) {
-  printf("Brewing tea and wating for the strong staste ...\n");
+  printf("Brewing tea and waiting for the strong taste ...\n");
 }
 
 int teaWithHook_customerWantsCodiments(CaffeineBeverageWithHook* const me) {

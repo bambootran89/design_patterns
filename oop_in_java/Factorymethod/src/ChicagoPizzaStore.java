@@ -9,7 +9,6 @@
  * Inherits the {@code orderPizza()} template method from PizzaStore.
  */
 public class ChicagoPizzaStore extends PizzaStore {
-
   @Override
   Pizza createPizza(String type) {
     // TODO Auto-generated method stub

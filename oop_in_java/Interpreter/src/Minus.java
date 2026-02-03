@@ -2,12 +2,11 @@ import java.util.Map;
 
 /**
  * Non-Terminal Expression (Minus).
- * <p>
- * Represents the subtraction operation. It contains left and right expressions
- * and interprets them recursively, returning the difference.
+ *
+ * <p>Represents the subtraction operation. It contains left and right expressions and
+ * interprets them recursively, returning the difference.
  */
 public class Minus implements Expression {
-
   Expression leftOperand;
   Expression rightOperand;
 
@@ -18,13 +17,11 @@ public class Minus implements Expression {
 
   @Override
   public int interpret(Map<String, Expression> variables) {
-    // TODO Auto-generated method stub
     return leftOperand.interpret(variables) - rightOperand.interpret(variables);
   }
 
   @Override
   public String show() {
-    // TODO Auto-generated method stub
     return leftOperand.toString() + " " + rightOperand.toString();
   }
 }

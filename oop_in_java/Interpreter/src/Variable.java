@@ -2,9 +2,9 @@ import java.util.Map;
 
 /**
  * Terminal Expression (Variable).
- * <p>
- * Represents a variable in the expression key (e.g. "x", "y").
- * The interpret operation retrieves the variable's value from the context map.
+ *
+ * <p>Represents a variable in the expression key (e.g. "x", "y"). The interpret
+ * operation retrieves the variable's value from the context map.
  */
 public class Variable implements Expression {
   private String name;
@@ -15,15 +15,14 @@ public class Variable implements Expression {
 
   @Override
   public int interpret(Map<String, Expression> variables) {
-    // TODO Auto-generated method stub
-    if (null == variables.get(name))
+    if (null == variables.get(name)) {
       return 0;
+    }
     return variables.get(name).interpret(variables);
   }
 
   @Override
   public String show() {
-    // TODO Auto-generated method stub
     return name;
   }
 }

@@ -1,0 +1,9 @@
+BasedOnStyle: Google
+ColumnLimit: 88
+IndentWidth: 2
+Language: Cpp
+---
+Language: Java
+BasedOnStyle: Google
+ColumnLimit: 88
+IndentWidth: 2

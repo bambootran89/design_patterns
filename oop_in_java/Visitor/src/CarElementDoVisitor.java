@@ -1,12 +1,11 @@
 /**
  * Concrete Visitor: Action Visitor.
- * <p>
- * Implements operations that perform actions on car elements.
- * <p>
- * <b>Pattern Role:</b> Concrete Visitor.
- * <p>
- * This visitor "kicks" wheels, "starts" the engine, "moves" the body -
- * demonstrating
+ *
+ * <p>Implements operations that perform actions on car elements.
+ *
+ * <p><b>Pattern Role:</b> Concrete Visitor.
+ *
+ * <p>This visitor "kicks" wheels, "starts" the engine, "moves" the body - demonstrating
  * how different operations can be applied to the same object structure without
  * modifying the element classes.
  */

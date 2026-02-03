@@ -1,9 +1,11 @@
 /** Client demonstration code for the pattern. */
 public class Client {
-
-  /** @param args */
+  /**
+   * Main entry point.
+   *
+   * @param args command line arguments
+   */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
     PizzaStore nyStore = new NYPizzaStore();
     PizzaStore chicagoStore = new ChicagoPizzaStore();
 

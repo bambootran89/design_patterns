@@ -22,7 +22,10 @@ jobs:
     - name: Install Build Tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y gcc make
+        sudo apt-get install -y gcc make clang-format cppcheck
+
+    - name: Run Style Checks
+      run: ./scripts/style.sh
 
     - name: Run Tests
       run: make test

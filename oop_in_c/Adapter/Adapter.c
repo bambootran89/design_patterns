@@ -19,14 +19,14 @@ typedef struct {
   const struct SolidObject* pSolidObject;
   char name[100];
   int timelife;
-} Funiture;
-static void funiture_packageObject(const struct SolidObject* me) {
-  Funiture* const me_ = (Funiture*)me;
-  printf(" Putting Funiture %s to the van\n", me_->name);
+} Furniture;
+static void furniture_packageObject(const struct SolidObject* me) {
+  Furniture* const me_ = (Furniture*)me;
+  printf(" Putting Furniture %s to the van\n", me_->name);
 }
-void funiture_ctor(Funiture* const me, const char* const name_) {
+void furniture_ctor(Furniture* const me, const char* const name_) {
   static struct SolidObject const solidObject = {
-      &solidObject, .packageObject = funiture_packageObject};
+      &solidObject, .packageObject = furniture_packageObject};
   me->pSolidObject = &solidObject;
   strcpy(me->name, name_);
 }
@@ -38,11 +38,11 @@ typedef struct {
 } Book;
 static void book_packageObject(const struct SolidObject* me) {
   Book* const me_ = (Book*)me;
-  printf(" Putting Funiture %s to the van\n", me_->name);
+  printf(" Putting Book %s to the van\n", me_->name);
 }
 void book_ctor(Book* const me, const char* const name_) {
-  static struct SolidObject const solidObject = {
-      &solidObject, .packageObject = book_packageObject};
+  static struct SolidObject const solidObject = {&solidObject,
+                                                 .packageObject = book_packageObject};
   me->pSolidObject = &solidObject;
   strcpy(me->name, name_);
 }
@@ -93,8 +93,8 @@ static void liquid_packageObject(const struct SolidObject* me) {
 }
 void liquidAdapter_ctor(LiquidAdapter* const me, const char* const name_,
                         const Liquid* const liquid_) {
-  static struct SolidObject const solidObject = {
-      &solidObject, .packageObject = liquid_packageObject};
+  static struct SolidObject const solidObject = {&solidObject,
+                                                 .packageObject = liquid_packageObject};
   me->pSolidObject = &solidObject;
   strcpy(me->name, name_);
   me->liquid = liquid_;
@@ -107,8 +107,8 @@ int main() {
   int i;
   Book book;
   book_ctor(&book, "book");
-  Funiture funiture;
-  funiture_ctor(&funiture, "funiture");
+  Furniture furniture;
+  furniture_ctor(&furniture, "furniture");
 
   Liquid liquid;
   liquid_ctor(&liquid, "liquid");
@@ -117,7 +117,7 @@ int main() {
   liquidAdapter_ctor(&liquidAdapter, "liquidAdapter", &liquid);
 
   struct SolidObject* const solidObject[3] = {
-      (struct SolidObject* const)&book, (struct SolidObject* const)&funiture,
+      (struct SolidObject* const)&book, (struct SolidObject* const)&furniture,
       (struct SolidObject* const)&liquidAdapter};
 
   for (i = 0; i < 3; i++) {

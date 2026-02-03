@@ -1,17 +1,15 @@
 /**
  * Receiver: Stereo.
- * <p>
- * Knows how to perform stereo-related operations.
- * <p>
- * <b>Pattern Role:</b> Receiver.
- * <p>
- * This receiver provides multiple operations (on/off, setDvd/Cd/Radio,
- * setVolume)
- * that can be encapsulated into different Command objects, demonstrating how
- * a single Receiver can support multiple commands.
+ *
+ * <p>Knows how to perform stereo-related operations.
+ *
+ * <p><b>Pattern Role:</b> Receiver.
+ *
+ * <p>This receiver provides multiple operations (on/off, setDvd/Cd/Radio,
+ * setVolume) that can be encapsulated into different Command objects, demonstrating
+ * how a single Receiver can support multiple commands.
  */
 public class Stereo {
-
   void on() {
     System.out.println("Turn On stereo");
   }
@@ -29,7 +27,6 @@ public class Stereo {
   }
 
   void setRadio() {
-
     System.out.println("Selected Radio function");
   }
 

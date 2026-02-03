@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 int main() {
-    printf("Testing C Decorator...\n");
-    // Call pattern main
-    pattern_main();
-    printf("C Decorator Test Passed!\n");
-    return 0;
+  printf("Testing C Decorator...\n");
+  // Call pattern main
+  pattern_main();
+  printf("C Decorator Test Passed!\n");
+  return 0;
 }

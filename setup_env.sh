@@ -12,31 +12,54 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# 1. Check for Homebrew (MacOS Package Manager)
-if ! command_exists brew; then
-    echo "Homebrew not found. Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-    echo "Homebrew is already installed."
-fi
+OS="$(uname -s)"
+echo "Detected OS: $OS"
 
-# 2. Check for GCC (for C)
-if ! command_exists gcc; then
-    echo "GCC not found. Installing GCC..."
-    brew install gcc
-else
-    echo "GCC is installed: $(gcc --version | head -n 1)"
-fi
+if [ "$OS" = "Linux" ]; then
+    # Assume Debian/Ubuntu for now as per user context
+    if command_exists apt-get; then
+        echo "Detected apt-get. Updating and installing dependencies..."
+        sudo apt-get update
+        sudo apt-get install -y gcc make openjdk-17-jdk clang-format cppcheck
+    else
+        echo "Warning: apt-get not found. Manual installation required for non-Debian Linux."
+    fi
+elif [ "$OS" = "Darwin" ]; then
+    # MacOS
+    # 1. Check for Homebrew
+    if ! command_exists brew; then
+        echo "Homebrew not found. Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    else
+        echo "Homebrew is already installed."
+    fi
 
-# 3. Check for Java (JDK)
-if ! command_exists java; then
-    echo "Java not found. Installing OpenJDK..."
-    brew install openjdk
+    # 2. Install Dependencies
+    echo "Installing GCC, OpenJDK, clang-format, cppcheck via Brew..."
+    brew install gcc openjdk clang-format cppcheck make
     
-    # Suggest adding to path if needed (simplified for this script)
-    echo "Note: You might need to add java to your PATH permanently."
+    # Suggest adding java to path if needed
+    echo "Note: You might need to add java to your PATH manually if not already there."
 else
-    echo "Java is installed: $(java -version 2>&1 | head -n 1)"
+    echo "Unsupported OS: $OS. Please install dependencies manually."
+fi
+
+echo "Dependencies installed."
+
+# Run Style Checks
+if [ -f "./scripts/style.sh" ]; then
+    echo "Running Style Checks..."
+    ./scripts/style.sh
+else
+    echo "Warning: scripts/style.sh not found."
+fi
+
+# Run Tests
+if [ -f "Makefile" ]; then
+    echo "Running Tests..."
+    make test
+else
+    echo "Warning: Makefile not found."
 fi
 
 echo "Environment setup complete! You are ready to run the Design Patterns."

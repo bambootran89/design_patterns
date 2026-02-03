@@ -5,8 +5,11 @@ import javax.swing.JPanel;
 
 /** Demo: demonstrates the Mediator pattern with UI components. */
 public class MediatorDemo extends JFrame implements ActionListener {
-
-  /** @param args */
+  /**
+   * Main entry point.
+   *
+   * @param args command line arguments
+   */
   Mediator med = new ParticipantMediator();
 
   MediatorDemo() {
@@ -26,7 +29,6 @@ public class MediatorDemo extends JFrame implements ActionListener {
   }
 
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
     new MediatorDemo();
   }
 }

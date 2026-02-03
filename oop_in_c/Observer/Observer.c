@@ -21,11 +21,9 @@ typedef struct Observable Observable;
 struct Observable {
   const struct Observable* const this;
   void (*addObserver)(struct Observable* const me, struct Observer* const ob);
-  void (*deleteObserver)(struct Observable* const me,
-                         struct Observer* const ob);
+  void (*deleteObserver)(struct Observable* const me, struct Observer* const ob);
   void (*notifyObserver)(struct Observable* const me);
-  void (*setChanged)(struct Observable* const me, double tem, double hum,
-                     double press);
+  void (*setChanged)(struct Observable* const me, double tem, double hum, double press);
   void (*getInfo)(struct Observable* const me, char* const str);
 };
 
@@ -36,8 +34,7 @@ void deleteObserver(struct Observable* const me, struct Observer* const ob) {
   me->this->deleteObserver(me, ob);
 }
 
-void setChanged(struct Observable* const me, double tem, double hum,
-                double press) {
+void setChanged(struct Observable* const me, double tem, double hum, double press) {
   me->this->setChanged(me, tem, hum, press);
 }
 struct Observer {
@@ -95,8 +92,8 @@ void weatherData_setChanged(Observable* const me_, double tem, double hum,
 
 void weatherData_getInfo(Observable* const me_, char* const str) {
   WeatherData* const me = (WeatherData* const)me_;
-  snprintf(str, 100, "temperature %lf humidity %lf pressure %lf ",
-           me->temperature, me->humidity, me->pressure);
+  snprintf(str, 100, "temperature %lf humidity %lf pressure %lf ", me->temperature,
+           me->humidity, me->pressure);
 }
 
 void WeatherData_ctor(WeatherData* const me) {

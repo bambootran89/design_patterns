@@ -34,7 +34,8 @@ public class DhcpChannelClient implements Runnable {
   }
 
   public void run() {
-    DhcpMessage msg = new DhcpMessage(DhcpConstants.LOCALHOST, DhcpConstants.SERVER_PORT);
+    DhcpMessage msg =
+        new DhcpMessage(DhcpConstants.LOCALHOST, DhcpConstants.SERVER_PORT);
     for (int i = 0; i < 100; i++) {
       sendInfoRequest(i, msg);
     }
@@ -44,8 +45,7 @@ public class DhcpChannelClient implements Runnable {
     msg.setMessageType(DhcpConstants.INFO_REQUEST);
     msg.setTransactionId(id);
     byte[] clientIdBytes = {
-      (byte) 0xde, (byte) 0xbd, (byte) 0xeb, (byte) 0xde, (byte) 0xbd, (byte) 0xeb
-    };
+        (byte) 0xde, (byte) 0xbd, (byte) 0xeb, (byte) 0xde, (byte) 0xbd, (byte) 0xeb};
     ClientIdOption clientIdOption = new ClientIdOption();
     clientIdOption.setHexValue(clientIdBytes);
 

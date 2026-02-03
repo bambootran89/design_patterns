@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 int main() {
-    printf("Testing C Reactor...\n");
-    // Call pattern main
-    pattern_main();
-    printf("C Reactor Test Passed!\n");
-    return 0;
+  printf("Testing C Reactor...\n");
+  // Call pattern main
+  pattern_main();
+  printf("C Reactor Test Passed!\n");
+  return 0;
 }

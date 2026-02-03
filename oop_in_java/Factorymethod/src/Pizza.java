@@ -2,16 +2,14 @@ import java.util.ArrayList;
 
 /**
  * Product: Pizza.
- * <p>
- * Defines the interface for objects the factory method creates.
- * <p>
- * <b>Pattern Role:</b> Product.
- * <p>
- * In the Factory Method pattern, this is the abstract product. Concrete
- * products
- * (NYStyleCheesePizza, ChicagoStyleCheesePizza) extend this class and customize
- * the name, dough, sauce, and toppings. The template methods (prepare, bake,
- * cut, box)
+ *
+ * <p>Defines the interface for objects the factory method creates.
+ *
+ * <p><b>Pattern Role:</b> Product.
+ *
+ * <p>In the Factory Method pattern, this is the abstract product. Concrete products
+ * (NYStyleCheesePizza, ChicagoStyleCheesePizza) extend this class and customize the
+ * name, dough, sauce, and toppings. The template methods (prepare, bake, cut, box)
  * define the standard pizza-making algorithm.
  */
 public class Pizza {
@@ -26,7 +24,6 @@ public class Pizza {
     System.out.println("Adding sauce ...");
     System.out.println("Adding toppings: ");
     for (int i = 0; i < toppings.size(); i++) {
-
       System.out.println("  " + toppings.get(i));
     }
   }
@@ -36,7 +33,6 @@ public class Pizza {
   }
 
   void cut() {
-
     System.out.println("Cutting the pizza into diagonal slices");
   }
 
@@ -45,7 +41,6 @@ public class Pizza {
   }
 
   public String getName() {
-
     return name;
   }
 }

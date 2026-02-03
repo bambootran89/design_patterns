@@ -14,7 +14,6 @@
  * "Sold" state.
  */
 public class SoldState implements State {
-
   GumballMachine gumBallMachine;
 
   public SoldState(GumballMachine gumb) {

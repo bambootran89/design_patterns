@@ -41,8 +41,7 @@ void compositeGraphic_print(Graphic* const me_) {
   }
 }
 
-void CompositeGraphic_ctor(CompositeGraphic* const me,
-                           const char* const name_) {
+void CompositeGraphic_ctor(CompositeGraphic* const me, const char* const name_) {
   static Graphic const graphic = {&graphic, .print = compositeGraphic_print};
 
   me->pGraphic = &graphic;
@@ -59,6 +58,7 @@ int add(CompositeGraphic* const me_, Graphic* const graphic) {
     me->list[me->num] = graphic;
 
     (me->num)++;
+    return 0;
   }
 }
 

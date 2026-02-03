@@ -1,26 +1,24 @@
 /**
  * Concrete Mediator: Participant Mediator.
- * <p>
- * Implements cooperative behavior by coordinating Colleague objects.
- * <p>
- * <b>Pattern Role:</b> Concrete Mediator.
- * <p>
- * This class knows and maintains references to all colleague objects (BtnView,
- * BtnSearch, BtnBook, LblDisplay).
- * It implements the coordination logic: when one colleague changes state (e.g.,
- * search button clicked),
- * the mediator updates other colleagues (disables search, enables view/book,
- * updates display).
- * <p>
- * Benefits:
- * - Colleagues remain reusable without tight coupling.
- * - Interaction logic is centralized, making it easier to understand and
- * modify.
- * - Reduces subclassing complexity (colleagues don't need to know about each
+ *
+ * <p>Implements cooperative behavior by coordinating Colleague objects.
+ *
+ * <p><b>Pattern Role:</b> Concrete Mediator.
+ *
+ * <p>This class knows and maintains references to all colleague objects (BtnView,
+ * BtnSearch, BtnBook, LblDisplay). It implements the coordination logic: when one
+ * colleague changes state (e.g., search button clicked), the mediator updates other
+ * colleagues (disables search, enables view/book, updates display).
+ *
+ * <p>Benefits:
+ * <ul>
+ *   <li>Colleagues remain reusable without tight coupling.
+ *   <li>Interaction logic is centralized, making it easier to understand and modify.
+ *   <li>Reduces subclassing complexity (colleagues don't need to know about each
  * other).
+ * </ul>
  */
 class ParticipantMediator implements Mediator {
-
   BtnView btnView;
   BtnSearch btnSearch;
   BtnBook btnBook;

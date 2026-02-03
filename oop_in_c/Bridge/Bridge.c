@@ -105,8 +105,8 @@ struct ConcreateRemote {
   int currentStation;
 };
 
-void ConcreateRemote_ctor(struct ConcreateRemote* const me,
-                          struct TV* const imp, int channel) {
+void ConcreateRemote_ctor(struct ConcreateRemote* const me, struct TV* const imp,
+                          int channel) {
   RemoteControl_ctor(&me->super, imp);
 
   me->currentStation = channel;
@@ -171,8 +171,7 @@ int main() {
       if (input >= 100 && input <= 200)
         break;
       else {
-        printf(
-            " the number is out of range from 100 to 200 so try again ...: ");
+        printf(" the number is out of range from 100 to 200 so try again ...: ");
       }
     }
 

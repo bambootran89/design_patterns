@@ -4,9 +4,9 @@
 #include <stdio.h>
 
 int main() {
-    printf("Testing C AbstractFactory...\n");
-    // Call pattern main
-    pattern_main();
-    printf("C AbstractFactory Test Passed!\n");
-    return 0;
+  printf("Testing C AbstractFactory...\n");
+  // Call pattern main
+  pattern_main();
+  printf("C AbstractFactory Test Passed!\n");
+  return 0;
 }

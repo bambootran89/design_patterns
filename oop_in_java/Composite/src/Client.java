@@ -1,10 +1,9 @@
 /** Client demonstration code for the pattern. */
 public class Client {
   public static void main(String[] args) {
-
     LeafGraphic[] leafs = new LeafGraphic[4];
 
-    leafs[0] = new LeafGraphic("Buttom 1");
+    leafs[0] = new LeafGraphic("Button 1");
     leafs[1] = new LeafGraphic("Text ");
     leafs[2] = new LeafGraphic("checked ");
     leafs[3] = new LeafGraphic("contents ");
