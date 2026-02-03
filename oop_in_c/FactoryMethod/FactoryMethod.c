@@ -206,7 +206,7 @@ int main() {
   NYPizzaStore nyStore;
   NYPizzaStore_ctor(&nyStore);
 
-  Pizza* pizza;
+  const Pizza* pizza;
   pizza = pizzaStore_orderPizza((PizzaStore* const)&nyStore, "cheese");
 
   printf(" Ethan ordered a %s\n", pizza_getName(pizza));
@@ -214,7 +214,7 @@ int main() {
   ChicagoPizzaStore chicagoStore;
   ChicagoPizzaStore_ctor(&chicagoStore);
 
-  Pizza* chipizza;
+  const Pizza* chipizza;
   chipizza = pizzaStore_orderPizza((PizzaStore* const)&chicagoStore, "cheese");
 
   printf(" Joel ordered a %s\n", pizza_getName(chipizza));

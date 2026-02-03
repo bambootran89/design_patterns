@@ -46,7 +46,7 @@ typedef struct HappyHourStrategy {
   double discount;
 } HappyHourStrategy;
 
-static double happyHourStratery_getActPrice(BillingStrategy* const me_,
+static double happyHourStratery_getActPrice(const BillingStrategy* const me_,
                                             double rawPrice) {
   const HappyHourStrategy* const me = (const HappyHourStrategy* const)me_;
   return rawPrice * me->discount;
