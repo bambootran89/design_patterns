@@ -4,9 +4,15 @@
 
 Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
 
-## Problem
+## Real-World Analogy
 
-You have multiple ways to perform an operation and want to choose the appropriate algorithm at runtime without using conditional statements.
+You need to get to the airport. You can pick one of several strategies:
+1. **Bicycle**: Free, fun, but slow and sweaty.
+2. **Bus**: Cheap, but slow and depends on schedule.
+3. **Taxi**: Fast and comfortable, but expensive.
+4. **Helicopter**: Super fast, super expensive.
+
+You (the Context) choose a strategy based on your constraints (budget, time). You don't need to change your "Traveler" class to add a new transportation method. You just plug in a new strategy. The result (getting to the airport) is the same, but the method varies.
 
 ## Solution
 

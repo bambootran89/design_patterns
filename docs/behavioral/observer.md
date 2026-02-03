@@ -4,9 +4,12 @@
 
 Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
 
-## Problem
+## Real-World Analogy
 
-You need to maintain consistency between related objects without making them tightly coupled. When one object changes, you want multiple other objects to be automatically notified.
+Magazines and Newspaper subscriptions are the classic example.
+A publisher (Subject) produces a magazine. You (Observer) subscribe to it.
+Every time a new issue is out, it gets delivered to your mailbox automatically. You don't need to call the publisher every day asking "Is it ready yet?".
+If you cancel your subscription, you stop receiving issues. The publisher maintains a list of subscribers and notifies them all when a new issue is ready.
 
 ## Solution
 

@@ -4,9 +4,16 @@
 
 Separate the construction of a complex object from its representation, allowing the same construction process to create different representations.
 
-## Problem
+## Real-World Analogy
 
-An object requires multiple steps to construct, with many optional parameters.
+Imagine you are building a custom PC. You have a `Computer` object. To build it, you need to select a CPU, a Motherboard, RAM (DDR4 or DDR5?), Storage (SSD or HDD?), a GPU (maybe two?), a Power Supply, and a Case.
+
+You can't just slap any parts together. The CPU must fit the Motherboard socket. The PSU must have enough wattage.
+If you put all this logic into the `Computer` constructor, it becomes a mess.
+`new Computer("Intel i9", "Z690", "32GB", "1TB SSD", "RTX 3090", ...)`
+What if you don't want a GPU (for a headless server)? Pass `null`?
+`new Computer("Intel i9", ..., null, ...)`
+It gets ugly fast. The Builder pattern lets you construct the object step by step, setting only what you need.
 
 ## Solution
 

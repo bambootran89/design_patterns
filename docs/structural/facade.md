@@ -4,9 +4,17 @@
 
 Provide a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.
 
-## Problem
+## Real-World Analogy
 
-A complex subsystem with many interdependent classes is difficult to use directly.
+Imagine placing an order by phone. You call the shop's "facade" (the operator).
+Operator: "I want to buy a gaming laptop."
+Behind the scenes, the operator:
+1. Checks inventory with the Warehouse department.
+2. Checks your credit score with the Payment system.
+3. Arranges shipment with the Logistics department.
+4. Calculates tax with the Accounting system.
+
+You (the client) talk to one simple interface (the operator). You don't need to call the warehouse, then the bank, then the truck driver individually. The Facade abstracts away this complexity.
 
 ## Solution
 

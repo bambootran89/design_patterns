@@ -4,9 +4,11 @@
 
 Define a representation for a grammar and an interpreter that uses the representation to interpret sentences in the language.
 
-## Problem
+## Real-World Analogy
 
-Need to interpret sentences in a language or evaluate expressions.
+Imagine you are a musician. You have a sheet of music. The notes (symbols) on the staff represent a language. You (the interpreter) read these symbols and produce music.
+
+The sheet music is a representation of the melody. Your brain acts as the interpreter that executes the instructions defined by that language. Different musicians (interpreters) might play the same sheet slightly differently, but the underlying grammar (notes, rests, clefs) is the same.
 
 ## Solution
 

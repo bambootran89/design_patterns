@@ -4,9 +4,12 @@
 
 Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions uniformly.
 
-## Problem
+## Real-World Analogy
 
-You need to represent hierarchical tree structures and want to treat individual objects and compositions of objects uniformly.
+Imagine a delivery service. You can ship a simple product (like a Hammer) or a Box. A Box can contain products and smaller Boxes.
+If you want to calculate the total price of a shipment, you can't just iterate a simple list. You have to open every box, and if there's a box inside, you open that too, recursively.
+
+Ideally, you want to treat a "Box" and a "Hammer" uniformly. You should be able to ask `getPrice()` on any item. If it's a hammer, it returns its price. If it's a box, it asks every item inside for its price and returns the sum. You (the client) don't care if it's a simple item or a complex box of boxes.
 
 ## Solution
 

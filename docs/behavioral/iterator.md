@@ -4,9 +4,16 @@
 
 Provide a way to access elements of an aggregate object sequentially without exposing its underlying representation.
 
-## Problem
+## Real-World Analogy
 
-Need to traverse a collection without exposing its internal structure.
+You are a tourist visiting Rome. You want to see the sights (Colosseum, Vatican, Trevi Fountain).
+You can traverse the city in multiple ways:
+1. Walk randomly (might miss things, might get lost).
+2. Take a guided tour bus (sequential, predefined route).
+3. Use a detailed map and plan an optimized route.
+4. Hire a private guide.
+
+The city (Aggregate) is the same, but the method of traversing it (Iterator) varies. You (the Client) don't need to know how the city’s streets are laid out (internal structure); you just stick to your chosen travel method to get from one landmark to the next.
 
 ## Solution
 

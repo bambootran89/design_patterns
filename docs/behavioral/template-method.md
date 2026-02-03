@@ -4,9 +4,20 @@
 
 Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm's structure.
 
-## Problem
+## Real-World Analogy
 
-Multiple classes have similar algorithms that differ only in some steps.
+Imagine a construction company building a neighborhood of standard houses.
+The **blueprint** (Template) is the same for all:
+1. Build Foundation
+2. Build Walls
+3. Build Roof
+4. Install Windows
+
+However, the **specifics** can vary.
+- House A: Wooden walls, Glass roof.
+- House B: Brick walls, Shingle roof.
+
+The overall algorithm (the sequence of steps) is fixed in the blueprint. But the implementation of specific steps (what material for walls?) is left to the individual house builders (subclasses). You don't want every builder to invent their own sequence (building roof before foundation).
 
 ## Solution
 

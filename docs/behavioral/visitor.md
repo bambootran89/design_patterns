@@ -4,9 +4,15 @@
 
 Represent an operation to be performed on elements of an object structure. Visitor lets you define a new operation without changing the classes of the elements on which it operates.
 
-## Problem
+## Real-World Analogy
 
-Need to perform operations on objects in a structure without modifying the objects themselves.
+Imagine an insurance agent visiting different types of buildings.
+- When visiting a **Residential House**, he sells medical insurance.
+- When visiting a **Bank**, he sells theft insurance.
+- When visiting a **Factory**, he sells fire insurance.
+
+The buildings (Elements) are different classes. The agent (Visitor) performs a different operation depending on the building he is visiting.
+You want to add this "selling insurance" capability without modifying the code of the buildings (they shouldn't know about insurance). The Visitor pattern lets you define this new operation in a separate class (the Agent) that visits the elements.
 
 ## Solution
 

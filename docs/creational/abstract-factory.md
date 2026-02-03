@@ -4,9 +4,15 @@
 
 Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
 
-## Problem
+## Real-World Analogy
 
-Need to create families of related objects that must be used together, ensuring compatibility between products.
+Imagine a furniture shop simulator. Your code consists of classes that represent:
+1. A family of related products, say: `Chair` + `Sofa` + `CoffeeTable`.
+2. Several variants of this family. For example, products `Chair` + `Sofa` + `CoffeeTable` are available in these variants: `Modern`, `Victorian`, `ArtDeco`.
+
+You need a way to create individual furniture objects so that they match other objects of the same family. Customers get quite mad when they receive a non-matching furniture like a Victorian chair in a Modern room.
+
+Also, you don't want to change existing code when adding new products or families of products. Furniture vendors update their catalogs very often, and you wouldn't want to change the core code each time.
 
 ## Solution
 

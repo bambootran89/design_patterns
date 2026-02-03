@@ -4,9 +4,12 @@
 
 Define an object that encapsulates how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly.
 
-## Problem
+## Real-World Analogy
 
-Objects communicate with each other in complex ways, creating tight coupling.
+Runway pilots don't talk to each other directly to decide who lands next. "Hey AirBus A380, I'm landing now, move over!" — that would be chaos.
+Instead, they communicate with the Air Traffic Control (ATC) tower.
+
+The pilots (Colleagues) only talk to the ATC (Mediator). The ATC decides who lands and who takes off. The pilots don't need to know about the existence of other planes, they just follow the ATC's instructions. This reduces the dependencies between planes from Many-to-Many to One-to-Many.
 
 ## Solution
 

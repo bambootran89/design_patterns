@@ -4,9 +4,13 @@
 
 Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
 
-## Problem
+## Real-World Analogy
 
-You need to add behavior or responsibilities to individual objects without affecting other objects. Using inheritance would create too many subclasses for every combination of features.
+Wearing clothes is a perfect example of using decorators. When you're cold, you wrap yourself in a sweater. If you're still cold with a sweater, you can wear a jacket on top. If it's raining, you can put on a raincoat.
+
+All these garments "extend" your basic behavior but don't require you to be a different person. You can take off any piece of clothing whenever you don't need it. You can't comfortably wear a raincoat *under* a tight t-shirt, so the order of decoration matters (order of dressing).
+
+If we used inheritance, we'd need classes like `PersonWithSweater`, `PersonWithRaincoat`, `PersonWithSweaterAndRaincoat`... which is ridiculous.
 
 ## Solution
 

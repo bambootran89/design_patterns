@@ -4,9 +4,13 @@
 
 Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
 
-## Problem
+## Real-World Analogy
 
-A class cannot anticipate the type of objects it needs to create. You want to delegate the responsibility of object creation to subclasses.
+Imagine you're creating a logistics management application. The first version of your app can only handle transportation by trucks, so the bulk of your code lives inside the `Truck` class.
+
+After a while, your app becomes pretty popular. Each day you receive dozens of requests from sea transportation lovers. "Great news, right?" But how about the code? At present, most of your code is coupled to the `Truck` class. Adding `Ships` into the app would require making changes to the entire codebase. Moreover, if later you decide to add another type of transportation to the app, you will probably need to make all of these changes again.
+
+As a result, you will end up with a nasty code, riddled with conditionals that switch the app's behavior depending on the class of transportation objects.
 
 ## Solution
 

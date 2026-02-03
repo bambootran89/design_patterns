@@ -4,9 +4,14 @@
 
 Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
-## Problem
+## Real-World Analogy
 
-An object's behavior depends on its state, and it must change behavior at runtime based on that state.
+Imagine your smartphone. It behaves differently depending on its state:
+1. **Unlocked**: Tapping screen launches apps.
+2. **Locked**: Tapping screen asks for a password.
+3. **Low Battery**: Tapping might show "Battery Low" popup or screen might be dim.
+
+The phone is the same object, but its behavior changes completely based on its current state. If you used a giant `switch` statement inside the `touch()` method (`case LOCKED: ... case UNLOCKED: ...`), it would become a nightmare as you add more states (e.g., "Do Not Disturb", "Airplane Mode"). The State pattern suggests creating separate classes for each state.
 
 ## Solution
 

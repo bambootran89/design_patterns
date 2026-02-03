@@ -4,9 +4,11 @@
 
 Ensure a class has only one instance and provide a global point of access to it.
 
-## Problem
+## Real-World Analogy
 
-Need to ensure exactly one instance of a class exists and provide controlled access to it.
+The government is an excellent example of the Singleton pattern. A country can have only one official government. Regardless of the personal identities of the individuals who form governments, the title, "The Government of X", is a global point of access that identifies the group of people in charge.
+
+Clients (citizens) don't create the government. They access the existing instance. If you try to create a new government, you might end up starting a revolution (or just getting an error).
 
 ## Solution
 

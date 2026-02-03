@@ -4,9 +4,12 @@
 
 Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces.
 
-## Problem
+## Real-World Analogy
 
-You want to use an existing class but its interface doesn't match the one you need.
+Imagine you are traveling from the US to Europe. You have your laptop with a standard US plug, but the hotel room only has European sockets. The plug and the socket are incompatible.
+
+You can't change the socket in the wall (it's the hotel's infrastructure). You also don't want to change your laptop's plug (voiding warranty).
+The solution is to use a travel adapter. It has a US socket on one side (for your laptop) and a European plug on the other (for the wall). It adapts the interface of the wall socket to the interface your laptop expects.
 
 ## Solution
 
