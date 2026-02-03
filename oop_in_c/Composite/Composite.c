@@ -36,7 +36,7 @@ void compositeGraphic_print(const Graphic* const me_) {
   int i;
   printf("this is CompositeGraphic %s \n", me->name);
   for (i = 0; i < me->num; i++) {
-    Graphic* const item = (Graphic* const)me->list[i];
+    const Graphic* const item = (const Graphic* const)me->list[i];
     print(item);
   }
 }
