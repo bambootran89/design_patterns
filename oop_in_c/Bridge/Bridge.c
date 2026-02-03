@@ -17,7 +17,7 @@ typedef struct TV TV;
 typedef struct TVVtbl TVVtbl;
 
 struct TVVtbl {
-  void (*turnChannel)(struct TV* const me, int channel);
+  void (*turnChannel)(const struct TV* const me, int channel);
 };
 
 struct TV {
@@ -39,7 +39,7 @@ void tv_off(struct TV* const me) {
   printf(" Turning off the TV %d inch\n", me->inch);
 }
 
-static void tv_turningChannel(struct TV* const me, int channel) {
+static void tv_turningChannel(const struct TV* const me, int channel) {
   // ASSERT(0);
   return;
 }
@@ -55,7 +55,7 @@ struct Sony {
   char name[100];
 };
 
-static void sony_turningChannel(struct TV* const me, int channel) {
+static void sony_turningChannel(const struct TV* const me, int channel) {
   const struct Sony* const me_ = (const struct Sony*)me;
   printf(" Processing turning channel to %d for %s\n", channel, me_->name);
 }
@@ -74,7 +74,7 @@ struct RCATv {
   char name[100];
 };
 
-static void rcatv_turningChannel(struct TV* const me, int channel) {
+static void rcatv_turningChannel(const struct TV* const me, int channel) {
   const struct RCATv* const me_ = (const struct RCATv*)me;
   printf(" Processing turning channel to %d for %s\n", channel, me_->name);
 }

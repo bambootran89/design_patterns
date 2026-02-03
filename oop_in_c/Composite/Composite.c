@@ -13,10 +13,10 @@ typedef struct Graphic Graphic;
 
 struct Graphic {
   const struct Graphic* super;
-  void (*print)(struct Graphic* const me);
+  void (*print)(const struct Graphic* const me);
 };
 
-void print(Graphic* const graphic);
+void print(const Graphic* const graphic);
 
 /**
  * @brief Composite: Composite Graphic.
@@ -31,7 +31,7 @@ typedef struct CompositeGraphic {
   const Graphic* list[MAX];
 } CompositeGraphic;
 
-void compositeGraphic_print(Graphic* const me_) {
+void compositeGraphic_print(const Graphic* const me_) {
   CompositeGraphic* const me = (CompositeGraphic* const)me_;
   int i;
   printf("this is CompositeGraphic %s \n", me->name);
@@ -73,7 +73,7 @@ typedef struct LeafGraphic {
   char name[100];
 } LeafGraphic;
 
-void leafGraphic_print(Graphic* const me_) {
+void leafGraphic_print(const Graphic* const me_) {
   const LeafGraphic* const me = (const LeafGraphic* const)me_;
   printf("this is LeafGraphic %s \n", me->name);
 }
@@ -85,7 +85,7 @@ void LeafGraphic_ctor(LeafGraphic* const me, const char* const name_) {
   strcpy(me->name, name_);
 }
 
-void print(Graphic* const graphic) { (graphic->super->print)(graphic); }
+void print(const Graphic* const graphic) { (graphic->super->print)(graphic); }
 
 int main() {
   LeafGraphic leaf0, leaf1, leaf2, leaf3;
